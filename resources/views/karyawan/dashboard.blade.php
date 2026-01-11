@@ -190,9 +190,12 @@
             right:0; 
             bottom:0; 
             background:rgba(0,0,0,.5); 
-            z-index:998; 
+            z-index:1000; 
+            pointer-events:auto;
         }
         .sidebar-overlay.active{ display:block; }
+        .sidebar{ pointer-events:auto; }
+        .sidebar-nav .nav-item{ pointer-events:auto; }
         .card{ 
             background:var(--panel); 
             border:1px solid rgba(0,102,255,.1); 
@@ -307,11 +310,11 @@
                 position:fixed; 
                 left:-280px; 
                 top:80px; 
-                z-index:999; 
+                z-index:1001; 
                 height:calc(100vh - 80px);
                 transition: left .3s ease;
             }
-            .sidebar.active{ left:0; }
+            .sidebar.active{ left:0; z-index:1001; }
             .mobile-menu-btn{ display:block; }
             .content-wrapper{ padding: 20px; }</style>
 </head>
