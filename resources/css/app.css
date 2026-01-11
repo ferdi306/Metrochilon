@@ -1,0 +1,105 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* Tailwind layers + modern minimal component utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --card-radius: 14px;
+  --accent: #ef4444; /* ganti jika mau warna lain (mis. #6366f1 untuk indigo) */
+  --muted: #6b7280;
+  --bg-start: #fffaf9;
+  --bg-end: #fff5f5;
+}
+
+/* GlobalBase */
+html, body {
+  font-family: var(--font-sans);
+  background: linear-gradient(180deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reusable components using @apply for Tailwind classes */
+@layer components {
+  .card {
+    @apply bg-white rounded-[var(--card-radius)] shadow-sm p-5;
+    border: 1px solid rgba(15,23,42,0.04);
+  }
+
+  .page-wrap {
+    @apply min-h-screen p-6;
+  }
+
+  .page-header {
+    @apply flex items-center justify-between mb-6;
+  }
+
+  .avatar-sm {
+    @apply w-10 h-10 rounded-full object-cover border border-gray-100;
+  }
+
+  .kpi {
+    @apply text-xs text-gray-500;
+  }
+
+  .kpi-value {
+    @apply mt-2 text-2xl font-semibold text-gray-800;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-[var(--accent)] text-white px-4 py-2 rounded-lg shadow-md;
+    transition: transform .08s ease, box-shadow .12s ease;
+  }
+  .btn-primary:hover { transform: translateY(-1px); filter:brightness(.98); }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center bg-transparent text-[var(--accent)] border border-[var(--accent)] px-3 py-2 rounded-lg;
+  }
+
+  input[type="file"], select, input[type="text"], textarea {
+    @apply border border-gray-200 rounded-md px-3 py-2 bg-white text-sm;
+    transition: box-shadow .12s ease, border-color .12s ease;
+  }
+  input:focus, select:focus, textarea:focus {
+    @apply outline-none ring-2;
+    box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+    border-color: rgba(239,68,68,0.25);
+  }
+
+  .soft-list-item {
+    @apply p-3 rounded-md bg-gray-50 text-sm text-gray-700;
+  }
+
+  .table-card {
+    @apply divide-y divide-gray-100;
+  }
+
+  /* Sidebar styles */
+  aside#sidebar .card { padding: 1rem; }
+  aside#sidebar nav a { @apply transition-colors duration-150; }
+  aside#sidebar nav a.active { @apply bg-[rgba(239,68,68,0.06)] text-[var(--accent)]; }
+  aside#sidebar form button { @apply mt-2; }
+}
+
+/* small decorative utility */
+@layer utilities {
+  .bg-soft-accent {
+    background-image: radial-gradient(600px 200px at 10% 10%, rgba(239,68,68,0.06), transparent 20%),
+                      radial-gradient(500px 180px at 90% 90%, rgba(239,68,68,0.04), transparent 20%);
+  }
+
+  .sticky { position: sticky; }
+}
