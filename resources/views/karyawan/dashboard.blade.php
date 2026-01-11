@@ -193,7 +193,7 @@
             z-index:1000; 
             pointer-events:auto;
         }
-        .sidebar-overlay.active{ display:block; }
+        .sidebar-overlay.active{ display:block; left:280px; }
         .sidebar{ pointer-events:auto; }
         .sidebar-nav .nav-item{ pointer-events:auto; }
         .card{ 
@@ -310,6 +310,7 @@
                 position:fixed; 
                 left:-280px; 
                 top:80px; 
+                width:280px;
                 z-index:1001; 
                 height:calc(100vh - 80px);
                 transition: left .3s ease;
